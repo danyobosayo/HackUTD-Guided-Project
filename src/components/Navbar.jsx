@@ -1,20 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <>
       <div className="flex flex-row justify-between items-center px-20 py-4 bg-pastelblue">
         {/* TITLE */}
-        <div className="text-darkgreen text-3xl poppins-bold hover:text-pastelgreen transition duration-300">
+        <Link to="/" className="text-darkgreen text-3xl poppins-bold hover:text-pastelgreen transition duration-300">
           Ripple & Refresh
-        </div>
+        </Link>
         {/* PAGES */}
         <div className="flex flex-row gap-8 poppins-semibold text-2xl text-darkblue">
-          <p className="hover:text-pastelgreen transition duration-300">map</p>
-          <p className="hover:text-pastelgreen transition duration-300">rsvp</p>
-          <p className="hover:text-pastelgreen transition duration-300">
+          <Link to="/map" className="hover:text-pastelgreen transition duration-300">map</Link>
+          <Link to="/rsvp" className="hover:text-pastelgreen transition duration-300">rsvp</Link>
+          <Link to="/activity" className="hover:text-pastelgreen transition duration-300">
             activity
-          </p>
+          </Link>
         </div>
       </div>
       {/* Horizontal line separator */}
