@@ -1,9 +1,23 @@
-import data from "../data/data.json";
+//import data from "../data/data.json";
 import Card from "./Card";
+import { useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase/firebase";
 
 function Dashboard() {
-  // console.log(data); <- We don't need to log the data anymore
   // Insert state to store items, initialized with data from JSON file
+  const [items, setItems] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "invitees"));
+      const dataArray = querySnapshot.docs.map(doc => doc.data());
+      setItems(dataArray);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
+
   return (
     <div className="relative my-12 flex flex-col items-center">
       {/* TITLE */}
@@ -13,7 +27,7 @@ function Dashboard() {
       {/* Event List Grid */}
       <div className="relative z-10 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Map through objects and render a Card component for each */}
-        {data.map((object) => (
+        {items.map((object) => (
           <Card
             key={object.id}
             name={object.name}

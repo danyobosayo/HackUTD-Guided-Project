@@ -1,5 +1,5 @@
 import React from "react";
-
+import WeatherComponent from "../utils/WeatherComponent";
 function ActivityPage() {
   return (
     <div>
@@ -11,6 +11,7 @@ function ActivityPage() {
         {/* Center Card for Vote and Weather */}
         <div className="relative z-10 p-6 w-full max-w-2xl flex flex-col gap-6">
           {/* COMPONENTS HERE */}
+          <WeatherComponent />
         </div>
       </div>
     </div>
