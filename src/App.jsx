@@ -9,26 +9,32 @@ import RsvpPage from "./pages/RsvpPage";
 
 function App() {
   return (
-    <Router>
-      {/* Regardless of what page we're on, we ALWAYS render the Navbar */}
-      <Navbar />
-      <Routes>
-        {/* Home route displaying Navbar, FeaturedItem, and Dashboard */}
-        <Route
-          path="/"
-          element={
-            <>
-              <FeaturedItem />
-              <Dashboard />
-            </>
-          }
-        />
-        {/* Browse route displaying Navbar and BrowsePage */}
-        <Route path="/map" element={<MapPage />} />
-        <Route path="/activity" element={<ActivityPage />} />
-        <Route path="/rsvp" element={<RsvpPage />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <Router>
+        {/* Regardless of what page we're on, we ALWAYS render the Navbar */}
+        <Routes>
+          {/* Landing Page at Root Path */}
+          <Route path="/" element={<LandingPage />} />
+
+          <Route
+            path="/home"
+            element={
+              <>
+                <Navbar />
+                <FeaturedItem />
+                <Dashboard />
+              </>
+            }
+          />
+          {/* Browse route displaying Navbar and BrowsePage */}
+          <Route path="/map" element={<MapPage />} />
+          <Route path="/activity" element={<ActivityPage />} />
+          <Route path="/rsvp" element={<RsvpPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 
