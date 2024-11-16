@@ -37,6 +37,7 @@ function App() {
             path="/map"
             element={
               <PrivateRoute>
+                <Navbar />
                 <MapPage />
               </PrivateRoute>
             }
@@ -45,6 +46,7 @@ function App() {
             path="/activity"
             element={
               <PrivateRoute>
+                <Navbar />
                 <ActivityPage />
               </PrivateRoute>
             }
@@ -53,6 +55,7 @@ function App() {
             path="/rsvp"
             element={
               <PrivateRoute>
+                <Navbar />
                 <RsvpPage />
               </PrivateRoute>
             }
