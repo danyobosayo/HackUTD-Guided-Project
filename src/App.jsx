@@ -6,30 +6,58 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MapPage from "./pages/MapPage";
 import ActivityPage from "./pages/ActivityPage";
 import RsvpPage from "./pages/RsvpPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import LandingPage from "./pages/LandingPage";
+import { AuthProvider } from "./contexts/authContext";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        {/* Regardless of what page we're on, we ALWAYS render the Navbar */}
         <Routes>
           {/* Landing Page at Root Path */}
           <Route path="/" element={<LandingPage />} />
-
+          {/* Protected Routes */}
           <Route
             path="/home"
             element={
-              <>
-                <Navbar />
-                <FeaturedItem />
-                <Dashboard />
-              </>
+              <PrivateRoute>
+                <>
+                  <Navbar />
+                  <FeaturedItem />
+                  <Dashboard />
+                </>
+              </PrivateRoute>
             }
           />
           {/* Browse route displaying Navbar and BrowsePage */}
-          <Route path="/map" element={<MapPage />} />
-          <Route path="/activity" element={<ActivityPage />} />
-          <Route path="/rsvp" element={<RsvpPage />} />
+          <Route
+            path="/map"
+            element={
+              <PrivateRoute>
+                <MapPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/activity"
+            element={
+              <PrivateRoute>
+                <ActivityPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/rsvp"
+            element={
+              <PrivateRoute>
+                <RsvpPage />
+              </PrivateRoute>
+            }
+          />
+          {/* Public Routes */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>
