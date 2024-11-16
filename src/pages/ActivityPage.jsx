@@ -1,5 +1,7 @@
 import React from "react";
 import WeatherComponent from "../utils/WeatherComponent";
+import VoteComponent from "../utils/VoteComponent";
+
 function ActivityPage() {
   return (
     <div>
@@ -12,6 +14,7 @@ function ActivityPage() {
         <div className="relative z-10 p-6 w-full max-w-2xl flex flex-col gap-6">
           {/* COMPONENTS HERE */}
           <WeatherComponent />
+          <VoteComponent />
         </div>
       </div>
     </div>
